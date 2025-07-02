@@ -24,4 +24,4 @@ select  department ,count(*) as departments ,avg(salary) salary from std group b
 select avg(salary) as average from std group by(department)
 ,avg(salary) as average from std group by(department)
 
-
+having ka clause 
