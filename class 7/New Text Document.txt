@@ -1,0 +1,27 @@
+use aptech
+select * from std
+
+create view selectdata as 
+select std.name as studentName,std.department ,faculty.name as facultyName ,course.name as CourseName 
+from
+std
+inner join 
+faculty
+on
+std.f_id=faculty.id
+inner join 
+course
+on
+std.c_id =course.id
+
+select * from selectdata
+
+select department from std
+
+select  department ,count(*) as departments ,avg(salary) department from std group by(department)
+select  department ,count(*) as departments ,avg(salary) salary from std group by(department)
+
+select avg(salary) as average from std group by(department)
+,avg(salary) as average from std group by(department)
+
+
