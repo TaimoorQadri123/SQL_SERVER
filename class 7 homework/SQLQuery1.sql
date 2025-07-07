@@ -1,0 +1,55 @@
+CREATE {PROC | PROCEDURE} procedure_name 
+[ { @parameter data_type } ]
+AS
+<sql_statement>
+
+
+CREATE DATABASE taskprocedure;
+use taskprocedure;
+CREATE TABLE Customer (
+    CustomerID INT PRIMARY KEY,
+    TerritoryID INT
+);
+
+CREATE TABLE SalesTerritory (
+    TerritoryID INT PRIMARY KEY,
+    Name VARCHAR(50)
+);
+
+
+INSERT INTO SalesTerritory (TerritoryID, Name) VALUES
+(9, 'Australia'),
+(10, 'Canada'),
+(11, 'USA');
+
+
+INSERT INTO Customer (CustomerID, TerritoryID) VALUES
+(15, 9),
+(33, 9),
+(51, 9),
+(63, 9),
+(87, 9),
+(105, 9),
+(123, 9),
+(141, 9),
+(159, 9),
+(177, 9),
+(199, 10); 
+
+
+
+CREATE PROCEDURE uspGetCustTerritory
+AS
+SELECT TOP 10 
+    Customer.CustomerID, 
+    Customer.TerritoryID, 
+    SalesTerritory.Name
+FROM 
+    Customer
+JOIN 
+    SalesTerritory 
+ON 
+    Customer.TerritoryID = SalesTerritory.TerritoryID;
+
+
+	EXEC uspGetCustTerritory;
